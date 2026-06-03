@@ -8,6 +8,7 @@ Final-submission-ready research prototype for multi-layer defense against simula
 - 2,500-record simulated benchmark across five safety categories
 - Real evaluation metrics generated from pipeline predictions
 - Streamlit dashboard with dynamic metrics, plot, confusion matrix, hover effects, and deployment configuration
+- Live dashboard prompt demo with full detector and mitigation trace
 - CPU/free-tier friendly default with optional Hugging Face Llama-3.2-3B-Instruct backend
 
 ## Folder Structure
@@ -88,6 +89,16 @@ False Positive Rate: 0.0%
 F1 Score: 0.967
 Accuracy: 94.96%
 ```
+
+## Dashboard Features
+
+- Live prompt testing
+- Risk score, risk label, escalation status, and block decision
+- Full JSON decision trace
+- Confusion matrix
+- Evaluation plot
+- Reproduction commands
+- CSS hover and 3D-like card effects
 
 ## Streamlit Cloud
 

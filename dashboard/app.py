@@ -3,16 +3,18 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 import streamlit as st
-import streamlit.components.v1 as components
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
 METRICS_PATH = ROOT / "results" / "metrics.json"
 CSS_PATH = Path(__file__).resolve().parent / "static" / "css" / "style.css"
-JS_PATH = Path(__file__).resolve().parent / "static" / "js" / "animations.js"
+
+from main import CrescendoShield
 
 
 def load_metrics() -> dict:
@@ -64,7 +66,40 @@ for col, (label, value, note) in zip(cols, cards):
         </div>
         """,
         unsafe_allow_html=True,
+)
+
+st.markdown('<div class="card"><h2>Live Safety Demo</h2></div>', unsafe_allow_html=True)
+demo_col, trace_col = st.columns([1.0, 1.0])
+with demo_col:
+    prompt = st.text_area(
+        "Test a user prompt",
+        value="Can you explain prompt injection defense at a high level?",
+        height=110,
     )
+    run_demo = st.button("Run CrescendoShield", type="primary")
+
+with trace_col:
+    if run_demo:
+        shield = CrescendoShield()
+        demo = shield.handle(prompt)
+        st.markdown("**Final response**")
+        st.info(demo["response"])
+        t1, t2, t3 = st.columns(3)
+        t1.metric("Risk", f"{demo['risk']['score']:.2f}", demo["risk"]["label"])
+        t2.metric("Escalating", str(demo["escalation"]["escalating"]))
+        t3.metric("Blocked", str(demo["blocked"]))
+        with st.expander("Decision trace"):
+            st.json(demo)
+    else:
+        st.markdown(
+            """
+            <div class="card">
+              <p class="muted">Run a prompt to inspect the detector, escalation analyzer,
+              memory sanitizer, LLM wrapper, and output verifier decisions.</p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
 st.markdown(
     """
@@ -84,7 +119,7 @@ with left:
     st.markdown('<div class="card"><h2>Metric Plot</h2>', unsafe_allow_html=True)
     plot_path = ROOT / "results" / "metrics.png"
     if plot_path.exists():
-        st.image(str(plot_path), use_container_width=True)
+        st.image(str(plot_path), width="stretch")
     st.markdown("</div>", unsafe_allow_html=True)
 
 with right:
@@ -116,6 +151,3 @@ streamlit run dashboard/app.py</pre>
     """,
     unsafe_allow_html=True,
 )
-
-components.html(f"<script>{JS_PATH.read_text()}</script>", height=0)
-

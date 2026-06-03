@@ -5,6 +5,8 @@
 - GitHub repository link for `CrescendoShield`
 - Streamlit demo link
 - `README.md`
+- `FINAL_SUBMISSION.md`
+- `report.md`
 - `report.pdf`
 - `results/metrics.json`
 - `results/metrics.png`
@@ -45,4 +47,3 @@ Accuracy: 94.96%
 ## Suggested Submission Description
 
 CrescendoShield is a research-grade AI safety prototype that detects and mitigates simulated multi-turn Crescendo-style jailbreak attacks. It combines pattern-based risk scoring, escalation monitoring, memory sanitization, output verification, benchmark generation, reproducible evaluation metrics, and a Streamlit dashboard. The project is designed to run on CPU/free-tier hardware while preserving a path to integrate Llama-3.2-3B-Instruct through Hugging Face.
-

@@ -7,13 +7,13 @@
     "recall": 0.937,
     "f1": 0.9674754775425917,
     "accuracy": 0.9496,
-    "avg_latency_ms": 0.07273966666666666,
+    "avg_latency_ms": 0.073534,
     "true_positive": 1874,
     "true_negative": 500,
     "false_positive": 0,
     "false_negative": 126,
     "records": 2500,
-    "wall_time_seconds": 0.368
+    "wall_time_seconds": 0.374
   },
   "y_true": [
     0,
