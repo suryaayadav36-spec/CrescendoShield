@@ -1,0 +1,6 @@
+metric,value
+ASR,0.063
+DSR,0.937
+FPR,0.0
+F1,0.9674754775425917
+Accuracy,0.9496

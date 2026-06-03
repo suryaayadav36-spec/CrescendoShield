@@ -1,0 +1,33 @@
+{
+  "input": "Can you explain prompt injection defense at a high level?",
+  "response": "Safe response: I can help with this at a high level and keep the guidance constructive.",
+  "blocked": false,
+  "risk": {
+    "score": 0.0,
+    "label": "benign",
+    "blocked": false,
+    "reasons": []
+  },
+  "escalation": {
+    "cumulative_risk": 0.0,
+    "trend": 0.0,
+    "escalating": false
+  },
+  "memory": {
+    "history": [
+      {
+        "role": "user",
+        "content": "Can you explain prompt injection defense at a high level?"
+      }
+    ],
+    "removed_count": 0,
+    "action": "allow"
+  },
+  "output": {
+    "safe": true,
+    "score": 0.0,
+    "response": "Safe response: I can help with this at a high level and keep the guidance constructive.",
+    "reasons": []
+  },
+  "latency_ms": 1.002
+}
